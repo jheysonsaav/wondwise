@@ -1,0 +1,18 @@
+[package]
+name = "wondwise"
+version = "0.1.0"
+authors = ["Jheyson Saavedra <jheysonsaav@gmail.com>"]
+edition = "2018"
+description = "A powerful cross-platform shell"
+readme = "../README.md"
+repository = "https://github.com/wondwise/wondwise"
+license = "GPL-3.0"
+keywords = ["shell", "cross-platform", "wondwise"]
+categories = ["command-line-interface", "command-line-utilities"]
+default-run = "wondwise"
+
+[[bin]]
+name = "wondwise"
+path = "main.rs"
+
+[dependencies]
