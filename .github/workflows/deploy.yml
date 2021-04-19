@@ -11,9 +11,6 @@ jobs:
   cargo-publish:
     name: Publish Cargo Package
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        crates: ["wondwise-cli"]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
