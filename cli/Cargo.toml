@@ -16,3 +16,4 @@ name = "wondwise"
 path = "main.rs"
 
 [dependencies]
+clap = "2.33.3"
