@@ -16,3 +16,4 @@ path = "src/main.rs"
 
 [dependencies]
 clap = "2.33.3"
+rustyline = "8.0.0"
