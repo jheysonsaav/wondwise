@@ -4,12 +4,9 @@ use clap::App;
 use commands::{Command, StartCommand};
 
 fn main() {
-    const APP_VERSION: &'static str = env!("CARGO_PKG_VERSION");
-    const APP_DESCRIPTION: &'static str = env!("CARGO_PKG_DESCRIPTION");
-
     let matches = App::new("wondwise")
-        .version(APP_VERSION)
-        .about(APP_DESCRIPTION)
+        .version(clap::crate_version!())
+        .about(clap::crate_description!())
         .subcommand(StartCommand::command())
         .get_matches();
 
