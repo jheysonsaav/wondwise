@@ -1,5 +1,4 @@
 mod commands;
-mod shell;
 
 use clap::App;
 use commands::{Command, StartCommand};

@@ -1,7 +1,6 @@
-use crate::shell;
-
 use super::Command;
 use clap::{App, ArgMatches, SubCommand};
+use std::{thread, time::Duration};
 pub struct StartCommand;
 
 impl<'a, 'b> Command<'a, 'b> for StartCommand {
@@ -10,6 +9,13 @@ impl<'a, 'b> Command<'a, 'b> for StartCommand {
     }
 
     fn setup(_args: &ArgMatches) {
-        shell::line_editor();
+        println!("Starting session");
+
+        for i in 1..6 {
+            thread::sleep(Duration::from_millis(50));
+            println!("Starting... {}", i);
+        }
+
+        println!("Finished session");
     }
 }
