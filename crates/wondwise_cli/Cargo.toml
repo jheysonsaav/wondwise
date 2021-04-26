@@ -1,5 +1,5 @@
 [package]
-name = "wondwise-cli"
+name = "wondwise_cli"
 version = "0.1.0"
 authors = ["Wondwise Contributors"]
 edition = "2018"
