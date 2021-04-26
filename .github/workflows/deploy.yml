@@ -23,7 +23,7 @@ jobs:
           override: true
 
       - name: Publish
-        run: for crate in crates/*/; do (cd "$crate" && cargo publish --token ${{ secrets.CRATES_IO_TOKEN && sleep 20 }} && cd ../..); done
+        run: for crate in crates/*/; do (cd "$crate" && cargo publish --token ${{ secrets.CRATES_IO_TOKEN }} && sleep 10 && cd ../..); done
 
   build-release:
     name: Build Release (${{ matrix.target }})
@@ -140,7 +140,6 @@ jobs:
         with:
           name: ${{ matrix.name }}
           path: ${{ matrix.name }}
-
 
   github-release:
     name: Publish Github Release
