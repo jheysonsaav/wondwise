@@ -3,6 +3,7 @@ mod commands;
 use clap::{App, Arg, Shell, SubCommand};
 use commands::{Command, StartCommand};
 use std::io;
+use wondwise_utils::logs::{Log, LogLevel};
 
 fn main() {
     let app = App::new("wondwise")
@@ -30,7 +31,7 @@ fn main() {
     match matches.subcommand() {
         ("start", Some(args)) => StartCommand::setup(args),
         ("completions", Some(args)) => {
-            let shell: Shell;
+            let mut shell: Shell = Shell::Bash;
 
             match args.value_of("shell") {
                 Some("bash") => shell = Shell::Bash,
@@ -38,7 +39,9 @@ fn main() {
                 Some("elvish") => shell = Shell::Elvish,
                 Some("powershell") => shell = Shell::PowerShell,
                 Some("fish") => shell = Shell::Fish,
-                None | Some(_) => panic!("Cannot get shell completions"),
+                None | Some(_) => {
+                    Log::new(LogLevel::Error, 1, "Cannot get shell").show()
+                }
             }
 
             app.clone()

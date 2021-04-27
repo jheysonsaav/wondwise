@@ -1,5 +1,5 @@
 [package]
-name = "wondwise_cli"
+name = "wondwise_utils"
 version = "0.1.0"
 authors = ["Wondwise Contributors"]
 edition = "2018"
@@ -8,13 +8,7 @@ repository = "https://github.com/wondwise/wondwise"
 license = "GPL-3.0"
 keywords = ["shell", "cross-platform", "wondwise"]
 categories = ["command-line-interface", "command-line-utilities"]
-default-run = "wondwise"
-
-[[bin]]
-name = "wondwise"
-path = "src/main.rs"
 
 [dependencies]
-wondwise_utils = { path = "../wondwise_utils", version = "0.1.0" }
-clap = "2.33.3"
-rustyline = "8.0.0"
+directories = "3.0.2"
+colored = "2.0.0"
