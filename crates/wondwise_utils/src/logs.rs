@@ -71,7 +71,7 @@ impl Log {
                     Err(_) => String::from("info"),
                 };
 
-                if log_level == String::from("debug") {
+                if log_level == *"debug" {
                     println!("{} {}", "DEBUG".bold().blue(), self.message);
                 }
             }
