@@ -30,13 +30,7 @@ fn main() {
                 .about("Output shell completion script to standard output")
                 .arg(
                     Arg::with_name("shell")
-                        .possible_values(&[
-                            "bash",
-                            "zsh",
-                            "powershell",
-                            "fish",
-                            "elvish",
-                        ])
+                        .possible_values(&["bash", "zsh", "powershell", "fish", "elvish"])
                         .required(true),
                 ),
         );
@@ -56,9 +50,7 @@ fn main() {
                 Some("elvish") => shell = Shell::Elvish,
                 Some("powershell") => shell = Shell::PowerShell,
                 Some("fish") => shell = Shell::Fish,
-                None | Some(_) => {
-                    Log::new(LogLevel::Error, 1, "Cannot get shell").show()
-                }
+                None | Some(_) => Log::new(LogLevel::Error, 1, "Cannot get shell").show(),
             }
 
             app.clone()

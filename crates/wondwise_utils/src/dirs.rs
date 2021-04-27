@@ -33,12 +33,10 @@ impl WondwiseDirs {
         if !self.config_dir.exists() {
             match create_dir_all(self.config_dir.to_owned()) {
                 Ok(_) => {
-                    let _ = Log::new(LogLevel::Debug, 0, "Created directory")
-                        .show();
+                    let _ = Log::new(LogLevel::Debug, 0, "Created directory").show();
                 }
                 Err(_) => {
-                    Log::new(LogLevel::Error, 1, "Error for create directory")
-                        .show();
+                    Log::new(LogLevel::Error, 1, "Error for create directory").show();
                 }
             }
         } else {
@@ -51,8 +49,7 @@ impl WondwiseDirs {
                     Log::new(LogLevel::Debug, 0, "Created directory").show();
                 }
                 Err(_) => {
-                    Log::new(LogLevel::Error, 1, "Error for create directory")
-                        .show();
+                    Log::new(LogLevel::Error, 1, "Error for create directory").show();
                 }
             }
         } else {
@@ -62,16 +59,10 @@ impl WondwiseDirs {
         if !self.data_dir.exists() {
             match create_dir_all(self.data_dir.to_owned()) {
                 Ok(_) => {
-                    Log::new(LogLevel::Debug, 0, "Created data directory")
-                        .show();
+                    Log::new(LogLevel::Debug, 0, "Created data directory").show();
                 }
                 Err(_) => {
-                    Log::new(
-                        LogLevel::Error,
-                        1,
-                        "Error for create data directory",
-                    )
-                    .show();
+                    Log::new(LogLevel::Error, 1, "Error for create data directory").show();
                 }
             }
         } else {
@@ -138,8 +129,7 @@ mod tests {
         #[cfg(target_os = "linux")]
         assert_eq!(
             dirs.data_dir.to_str().unwrap(),
-            format!("{}/.local/share/wondwise", env::var("HOME").unwrap())
-                .as_str()
+            format!("{}/.local/share/wondwise", env::var("HOME").unwrap()).as_str()
         );
 
         #[cfg(target_os = "windows")]
