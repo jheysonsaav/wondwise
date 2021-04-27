@@ -1,11 +1,17 @@
 mod commands;
 
 use clap::{App, Arg, Shell, SubCommand};
-use commands::{Command, StartCommand};
-use std::{env, io};
-use wondwise_utils::logs::{Log, LogLevel};
+use std::{env, io, thread};
+use wondwise_utils::{
+    dirs::WondwiseDirs,
+    logs::{Log, LogLevel},
+};
 
 fn main() {
+    thread::spawn(|| {
+        WondwiseDirs::load().verify();
+    });
+
     let app = App::new("wondwise")
         .version(clap::crate_version!())
         .about(clap::crate_description!())
@@ -13,11 +19,12 @@ fn main() {
             Arg::with_name("log-level")
                 .short("L")
                 .long("log-level")
+                .default_value("info")
                 .possible_values(&["debug", "info"])
                 .takes_value(true)
                 .global(true),
         )
-        .subcommand(StartCommand::command())
+        .subcommands(commands::commands())
         .subcommand(
             SubCommand::with_name("completions")
                 .about("Output shell completion script to standard output")
@@ -39,7 +46,7 @@ fn main() {
     env::set_var("LOG_LEVEL", matches.value_of("log-level").unwrap());
 
     match matches.subcommand() {
-        ("start", Some(args)) => StartCommand::setup(args),
+        ("start", Some(args)) => commands::start::setup(args),
         ("completions", Some(args)) => {
             let mut shell: Shell = Shell::Bash;
 

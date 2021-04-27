@@ -1,9 +1,8 @@
-mod start;
+pub mod start;
 
-use clap::{App, ArgMatches};
-pub use start::StartCommand;
+use clap::{App, SubCommand};
 
-pub trait Command<'a, 'b> {
-    fn command() -> App<'a, 'b>;
-    fn setup(args: &ArgMatches);
+pub fn commands() -> Vec<App<'static, 'static>> {
+    vec![SubCommand::with_name("start")
+        .about("Create new Wondwise Shell session")]
 }

@@ -29,11 +29,12 @@ impl WondwiseDirs {
         }
     }
 
-    pub fn verify(self) -> Self {
+    pub fn verify(&self) {
         if !self.config_dir.exists() {
             match create_dir_all(self.config_dir.to_owned()) {
                 Ok(_) => {
-                    let _ = Log::new(LogLevel::Debug, 0, "Created directory").show();
+                    let _ = Log::new(LogLevel::Debug, 0, "Created directory")
+                        .show();
                 }
                 Err(_) => {
                     Log::new(LogLevel::Error, 1, "Error for create directory")
@@ -61,7 +62,8 @@ impl WondwiseDirs {
         if !self.data_dir.exists() {
             match create_dir_all(self.data_dir.to_owned()) {
                 Ok(_) => {
-                    Log::new(LogLevel::Debug, 0, "Created data directory").show();
+                    Log::new(LogLevel::Debug, 0, "Created data directory")
+                        .show();
                 }
                 Err(_) => {
                     Log::new(
@@ -75,7 +77,6 @@ impl WondwiseDirs {
         } else {
             Log::new(LogLevel::Debug, 0, "The directory exist").show();
         }
-        self
     }
 
     pub fn config_dir(&self) -> &Path {
@@ -111,8 +112,11 @@ mod tests {
         #[cfg(target_os = "windows")]
         assert_eq!(
             dirs.config_dir.to_str().unwrap(),
-            format!("{}\\wondwise\\wondwise\\config", env::var("APPDATA").unwrap())
-                .as_str()
+            format!(
+                "{}\\wondwise\\wondwise\\config",
+                env::var("APPDATA").unwrap()
+            )
+            .as_str()
         );
 
         #[cfg(target_os = "macos")]
@@ -148,7 +152,7 @@ mod tests {
             .as_str()
         );
 
-       #[cfg(target_os = "macos")]
+        #[cfg(target_os = "macos")]
         assert_eq!(
             dirs.data_dir.to_str().unwrap(),
             format!(
@@ -191,4 +195,3 @@ mod tests {
         );
     }
 }
-
