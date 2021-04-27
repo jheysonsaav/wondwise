@@ -10,18 +10,19 @@ fn main() {
         .about(clap::crate_description!())
         .subcommand(StartCommand::command())
         .subcommand(
-            SubCommand::with_name("completions").arg(
-                Arg::with_name("shell")
-                    .possible_values(&[
-                        "bash",
-                        "zsh",
-                        "powershell",
-                        "fish",
-                        "elvish",
-                    ])
-                    .required(true)
-                    .index(1),
-            ),
+            SubCommand::with_name("completions")
+                .about("Output shell completion script to standard output")
+                .arg(
+                    Arg::with_name("shell")
+                        .possible_values(&[
+                            "bash",
+                            "zsh",
+                            "powershell",
+                            "fish",
+                            "elvish",
+                        ])
+                        .required(true),
+                ),
         );
 
     let matches = app.clone().get_matches();
@@ -30,6 +31,7 @@ fn main() {
         ("start", Some(args)) => StartCommand::setup(args),
         ("completions", Some(args)) => {
             let shell: Shell;
+
             match args.value_of("shell") {
                 Some("bash") => shell = Shell::Bash,
                 Some("zsh") => shell = Shell::Zsh,
