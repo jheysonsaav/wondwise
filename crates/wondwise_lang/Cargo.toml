@@ -1,0 +1,13 @@
+[package]
+name = "wondwise_lang"
+version = "0.1.0"
+authors = ["Wondwise Contributors"]
+edition = "2018"
+description = "A powerful cross-platform shell language"
+repository = "https://github.com/wondwise/wondwise"
+license = "GPL-3.0"
+keywords = ["shell", "cross-platform", "wondwise", "language"]
+categories = ["compilers", "parsing"]
+
+[dependencies]
+codespan-reporting = "0.11.1"
