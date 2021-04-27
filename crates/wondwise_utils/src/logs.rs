@@ -66,12 +66,17 @@ impl Log {
                 println!("{} {}", "INFO".bold().green(), self.message);
             }
             LogLevel::Debug => {
-                if env::var("LOG_LEVEL").unwrap() == "debug" {
+                let log_level = match env::var("LOG_LEVEL") {
+                    Ok(value) => value,
+                    Err(_) => String::from("info"),
+                };
+
+                if log_level == String::from("debug") {
                     println!("{} {}", "DEBUG".bold().blue(), self.message);
                 }
             }
             LogLevel::Error => {
-                println!("{} {}", "ERROR".bold().red(), self.message);
+                eprintln!("{} {}", "ERROR".bold().red(), self.message);
             }
             LogLevel::Warning => {
                 println!("{} {}", "WARNING".bold().yellow(), self.message);

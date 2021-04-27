@@ -1,6 +1,7 @@
 use super::Command;
 use clap::{App, ArgMatches, SubCommand};
 use std::{thread, time::Duration};
+
 pub struct StartCommand;
 
 impl<'a, 'b> Command<'a, 'b> for StartCommand {
