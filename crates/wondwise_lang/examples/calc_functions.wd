@@ -1,0 +1,11 @@
+pub fn sum(number_one, number_two) {
+  return number_one + number_two;
+}
+
+pub fn sub(number_one, number_two) {
+  return number_one - number_two;
+}
+
+// Calc
+sum(3, 2) // 5
+sub(38, 17) // 21

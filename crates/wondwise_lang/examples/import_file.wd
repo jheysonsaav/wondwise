@@ -1,0 +1,4 @@
+import { sum, sub } from "./calc_functions.wd";
+
+sum(13, 45) // 58
+sub(23, 8) // 15
