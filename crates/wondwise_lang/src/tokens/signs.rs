@@ -2,7 +2,7 @@
 
 use std::fmt;
 
-#[allow(dead_code)] // TODO: remove this when no longer needed
+#[allow(dead_code)]
 #[derive(Debug, PartialEq)]
 pub enum Signs {
     Dot,
