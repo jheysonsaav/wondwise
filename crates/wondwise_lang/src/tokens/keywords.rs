@@ -3,7 +3,7 @@
 use std::fmt;
 
 #[allow(dead_code)]
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum Keywords {
     Let,
     Const,
