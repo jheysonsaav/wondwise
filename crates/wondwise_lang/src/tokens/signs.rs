@@ -45,7 +45,6 @@ pub enum Signs {
     EndOfFile,
 }
 
-#[allow(dead_code)] // TODO: remove this when no longer needed
 impl Signs {
     #[allow(clippy::result_unit_err)]
     pub fn from(value: &str) -> Result<Signs, ()> {

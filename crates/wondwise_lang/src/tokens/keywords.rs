@@ -29,7 +29,6 @@ pub enum Keywords {
     Export,
 }
 
-#[allow(dead_code)] // TODO: remove this when no longer needed
 impl Keywords {
     #[allow(clippy::result_unit_err)]
     pub fn from(value: &str) -> Result<Keywords, ()> {
