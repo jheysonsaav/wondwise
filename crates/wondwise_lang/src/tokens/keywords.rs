@@ -1,5 +1,7 @@
 // Copyright (C) 2021 Wondwise Authors. All rights reserved. GPL-3.0 license.
 
+use std::fmt;
+
 #[allow(dead_code)] // TODO: remove this when no longer needed
 #[derive(Debug, PartialEq)]
 pub enum Keywords {
@@ -29,6 +31,7 @@ pub enum Keywords {
 
 #[allow(dead_code)] // TODO: remove this when no longer needed
 impl Keywords {
+    #[allow(clippy::result_unit_err)]
     pub fn from(value: &str) -> Result<Keywords, ()> {
         match value {
             "let" => Ok(Keywords::Let),
@@ -57,31 +60,33 @@ impl Keywords {
             _ => Err(()),
         }
     }
+}
 
-    pub fn to_string(&self) -> String {
+impl fmt::Display for Keywords {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            Keywords::Let => String::from("let"),
-            Keywords::Const => String::from("const"),
+            Keywords::Let => write!(f, "let"),
+            Keywords::Const => write!(f, "const"),
 
-            Keywords::Fn => String::from("fn"),
-            Keywords::Return => String::from("return"),
+            Keywords::Fn => write!(f, "fn"),
+            Keywords::Return => write!(f, "return"),
 
-            Keywords::True => String::from("true"),
-            Keywords::False => String::from("false"),
+            Keywords::True => write!(f, "true"),
+            Keywords::False => write!(f, "false"),
 
-            Keywords::For => String::from("for"),
-            Keywords::In => String::from("in"),
-            Keywords::Continue => String::from("continue"),
-            Keywords::Break => String::from("break"),
-            Keywords::While => String::from("while"),
+            Keywords::For => write!(f, "for"),
+            Keywords::In => write!(f, "in"),
+            Keywords::Continue => write!(f, "continue"),
+            Keywords::Break => write!(f, "break"),
+            Keywords::While => write!(f, "while"),
 
-            Keywords::If => String::from("if"),
-            Keywords::Else => String::from("else"),
-            Keywords::Switch => String::from("switch"),
+            Keywords::If => write!(f, "if"),
+            Keywords::Else => write!(f, "else"),
+            Keywords::Switch => write!(f, "switch"),
 
-            Keywords::Import => String::from("import"),
-            Keywords::From => String::from("from"),
-            Keywords::Export => String::from("export"),
+            Keywords::Import => write!(f, "import"),
+            Keywords::From => write!(f, "from"),
+            Keywords::Export => write!(f, "export"),
         }
     }
 }

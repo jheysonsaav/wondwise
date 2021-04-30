@@ -1,5 +1,7 @@
 // Copyright (C) 2021 Wondwise Authors. All rights reserved. GPL-3.0 license.
 
+use std::fmt;
+
 #[allow(dead_code)] // TODO: remove this when no longer needed
 #[derive(Debug, PartialEq)]
 pub enum Signs {
@@ -45,6 +47,7 @@ pub enum Signs {
 
 #[allow(dead_code)] // TODO: remove this when no longer needed
 impl Signs {
+    #[allow(clippy::result_unit_err)]
     pub fn from(value: &str) -> Result<Signs, ()> {
         match value {
             "." => Ok(Signs::Dot),
@@ -90,48 +93,50 @@ impl Signs {
             _ => Err(()),
         }
     }
+}
 
-    pub fn to_string(&self) -> String {
+impl fmt::Display for Signs {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            Signs::Dot => String::from("."),
-            Signs::Comma => String::from(","),
+            Signs::Dot => write!(f, "."),
+            Signs::Comma => write!(f, ","),
 
-            Signs::Colon => String::from(":"),
-            Signs::Semicolon => String::from(";"),
+            Signs::Colon => write!(f, ":"),
+            Signs::Semicolon => write!(f, ";"),
 
-            Signs::Equal => String::from("="),
-            Signs::DoubleEqual => String::from("=="),
-            Signs::EqualGreater => String::from("=>"),
+            Signs::Equal => write!(f, "="),
+            Signs::DoubleEqual => write!(f, "=="),
+            Signs::EqualGreater => write!(f, "=>"),
 
-            Signs::Not => String::from("!"),
-            Signs::NotEqual => String::from("!="),
+            Signs::Not => write!(f, "!"),
+            Signs::NotEqual => write!(f, "!="),
 
-            Signs::Plus => String::from("+"),
-            Signs::PlusEqual => String::from("+="),
+            Signs::Plus => write!(f, "+"),
+            Signs::PlusEqual => write!(f, "+="),
 
-            Signs::Minus => String::from("-"),
-            Signs::MinusEqual => String::from("-="),
+            Signs::Minus => write!(f, "-"),
+            Signs::MinusEqual => write!(f, "-="),
 
-            Signs::Less => String::from("<"),
-            Signs::LessEqual => String::from("<="),
+            Signs::Less => write!(f, "<"),
+            Signs::LessEqual => write!(f, "<="),
 
-            Signs::Greater => String::from(">"),
-            Signs::GreaterEqual => String::from(">="),
+            Signs::Greater => write!(f, ">"),
+            Signs::GreaterEqual => write!(f, ">="),
 
-            Signs::LeftParentheses => String::from("("),
-            Signs::RightParentheses => String::from(")"),
+            Signs::LeftParentheses => write!(f, "("),
+            Signs::RightParentheses => write!(f, ")"),
 
-            Signs::LeftBrace => String::from("{"),
-            Signs::RightBrace => String::from("}"),
+            Signs::LeftBrace => write!(f, "{{"),
+            Signs::RightBrace => write!(f, "}}"),
 
-            Signs::LeftBracket => String::from("["),
-            Signs::RightBracket => String::from("]"),
+            Signs::LeftBracket => write!(f, "["),
+            Signs::RightBracket => write!(f, "]"),
 
-            Signs::DoubleVBar => String::from("||"),
-            Signs::DoubleAmper => String::from("&&"),
+            Signs::DoubleVBar => write!(f, "||"),
+            Signs::DoubleAmper => write!(f, "&&"),
 
-            Signs::EndOfLine => String::from("\n"),
-            Signs::EndOfFile => String::from("<<EOF>>"),
+            Signs::EndOfLine => writeln!(f),
+            Signs::EndOfFile => write!(f, "<<EOF>>"),
         }
     }
 }
