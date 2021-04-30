@@ -1,4 +1,4 @@
-// Copyright 2021 Wondwise Authors. All rights reserved. GPL-3.0 license.
+// Copyright (C) 2021 Wondwise Authors. All rights reserved. GPL-3.0 license.
 
 //! ## Logs
 //! There are parts of the application where the use or registration of logs

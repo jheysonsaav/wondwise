@@ -1,5 +1,6 @@
-// Copyright 2021 Wondwise Authors. All rights reserved. GPL-3.0 license.
+// Copyright (C) 2021 Wondwise Authors. All rights reserved. GPL-3.0 license.
 
+#[allow(dead_code)]
 #[derive(Debug, PartialEq)]
 pub enum Token {
     // General
@@ -19,6 +20,9 @@ pub enum Token {
 
     If,
     Else,
+
+    Import,
+    Export,
 
     // Signs
     Dot,
@@ -73,6 +77,7 @@ pub enum Token {
     EndOfFile,
 }
 
+#[allow(dead_code)] // TODO: delete this code line with use c
 impl Token {
     /// Convert the token to a string.
     pub fn to_string(&self) -> String {
@@ -94,6 +99,9 @@ impl Token {
 
             Self::If => String::from("if"),
             Self::Else => String::from("else"),
+
+            Self::Import => String::from("import"),
+            Self::Export => String::from("export"),
 
             // Signs
             Self::Dot => String::from("."),
