@@ -46,7 +46,7 @@ pub enum Signs {
 }
 
 impl Signs {
-    #[allow(clippy::result_unit_err)]
+    #[allow(clippy::result_unit_err)] // TODO: remove when custom `error` is implemented
     pub fn from(value: &str) -> Result<Signs, ()> {
         match value {
             "." => Ok(Signs::Dot),
