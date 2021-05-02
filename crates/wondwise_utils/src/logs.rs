@@ -65,7 +65,7 @@ impl Log {
     pub fn show(&self) {
         match self.level {
             LogLevel::Info => {
-                println!("{} {}", "INFO".bold().green(), self.message);
+                println!("{} {}", "Info:".bold().green(), self.message);
             }
             LogLevel::Debug => {
                 let log_level = match env::var("LOG_LEVEL") {
@@ -74,14 +74,14 @@ impl Log {
                 };
 
                 if log_level == *"debug" {
-                    println!("{} {}", "DEBUG".bold().blue(), self.message);
+                    println!("{} {}", "Debug:".bold().blue(), self.message);
                 }
             }
             LogLevel::Error => {
-                eprintln!("{} {}", "ERROR".bold().red(), self.message);
+                eprintln!("{} {}", "Error:".bold().red(), self.message);
             }
             LogLevel::Warning => {
-                println!("{} {}", "WARNING".bold().yellow(), self.message);
+                println!("{} {}", "Warning:".bold().yellow(), self.message);
             }
         }
     }
