@@ -10,6 +10,7 @@ pub enum Token {
     Identifier(String),
     String(String),
     Number(i64),
+    Float(f64),
     Keyword(Keywords),
     Sign(Signs),
 }
