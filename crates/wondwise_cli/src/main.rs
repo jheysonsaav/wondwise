@@ -26,7 +26,12 @@ fn main() {
                 .takes_value(true)
                 .global(true),
         )
-        .subcommands(commands::commands())
+        .subcommand(SubCommand::with_name("start").about("Create new wondwise shell session"))
+        .subcommand(
+            SubCommand::with_name("run")
+                .about("Run wondwise script file")
+                .arg(Arg::with_name("file").value_name("FILE").required(true)),
+        )
         .subcommand(
             SubCommand::with_name("completions")
                 .about("Output shell completion script to standard output")
@@ -43,6 +48,7 @@ fn main() {
 
     match matches.subcommand() {
         ("start", Some(args)) => commands::start::setup(args),
+        ("run", Some(args)) => commands::run::setup(args),
         ("completions", Some(args)) => {
             let mut shell: Shell = Shell::Bash;
 
