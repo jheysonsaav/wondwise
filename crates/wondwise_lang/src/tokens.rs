@@ -28,6 +28,10 @@ impl Token {
         matches!(self, Token::Number(_))
     }
 
+    pub fn is_float(&self) -> bool {
+        matches!(self, Token::Float(_))
+    }
+
     pub fn get_keyword(&self) -> Option<Keywords> {
         match self {
             Token::Keyword(value) => Some(value.clone()),
