@@ -46,3 +46,44 @@ impl Token {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_is_identifier() {
+        assert!(Token::Identifier(String::new()).is_identifier());
+    }
+
+    #[test]
+    fn test_is_string() {
+        assert!(Token::String(String::new()).is_string());
+    }
+
+    #[test]
+    fn test_is_number() {
+        assert!(Token::Number(123).is_number());
+    }
+
+    #[test]
+    fn test_is_float() {
+        assert!(Token::Float(123.123).is_float());
+    }
+
+    #[test]
+    fn test_get_keyword() {
+        assert_eq!(
+            Token::Keyword(Keywords::Fn).get_keyword().unwrap(),
+            Keywords::Fn
+        );
+    }
+
+    #[test]
+    fn test_get_sign() {
+        assert_eq!(
+            Token::Sign(Signs::Semicolon).get_sign().unwrap(),
+            Signs::Semicolon
+        );
+    }
+}
