@@ -1,2 +1,13 @@
-[workspace]
-members = ["crates/*"]
+[package]
+name = "wondwise"
+version = "0.1.0"
+authors = ["Jheyson Saavedra <jheysonsaav@users.noreply.github.com>"]
+edition = "2018"
+description = "A powerful cross-platform shell"
+license = "MIT"
+keywords = ["shell", "cross-platform", "wondwise"]
+categories = ["command-line-interface", "command-line-utilities"]
+
+[dependencies]
+clap = "2.33.3"
+rustyline = "8.0.0"

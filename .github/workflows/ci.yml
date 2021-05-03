@@ -33,13 +33,13 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: test
-          args: --workspace
+          args:
 
       - name: Run Tests In Release
         uses: actions-rs/cargo@v1
         with:
           command: test
-          args: --release --workspace
+          args: --release
 
   cargo-check:
     name: Running Cargo Check on ${{ matrix.os }}
@@ -71,13 +71,13 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: test
-          args: --workspace
+          args:
 
       - name: Run Check In Release
         uses: actions-rs/cargo@v1
         with:
           command: test
-          args: --release --workspace
+          args: --release
 
   cargo-clippy:
     name: Running Cargo Clippy on ${{ matrix.os }}
@@ -109,10 +109,10 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: clippy
-          args: --workspace
+          args:
 
       - name: Run Clippy In Release
         uses: actions-rs/cargo@v1
         with:
           command: clippy
-          args: --release --workspace
+          args: --release

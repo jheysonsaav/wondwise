@@ -23,7 +23,7 @@ jobs:
           override: true
 
       - name: Publish
-        run: for crate in crates/*/; do (cd "$crate" && cargo publish --token ${{ secrets.CRATES_IO_TOKEN }} && sleep 10 && cd ../..); done
+        run: cargo publish --token ${{ secrets.CRATES_IO_TOKEN }}
 
   build-release:
     name: Build Release (${{ matrix.target }})
@@ -116,7 +116,7 @@ jobs:
           SDKROOT: /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk
         with:
           command: build
-          args: --release --workspace --target ${{ matrix.target }}
+          args: --release  --target ${{ matrix.target }}
           use-cross: ${{ matrix.os == 'ubuntu-latest' }}
 
       - name: Pre-release (windows)

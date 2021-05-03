@@ -1,8 +1,0 @@
-{
-  "recommendations": [
-    "matklad.rust-analyzer",
-    "tamasfe.even-better-toml",
-    "editorconfig.editorconfig",
-    "gruntfuggly.todo-tree"
-  ]
-}
